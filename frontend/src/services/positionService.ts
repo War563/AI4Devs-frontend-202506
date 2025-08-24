@@ -14,6 +14,7 @@ export class PositionService {
      */
     static async getInterviewFlow(positionId: string | number): Promise<any> {
         try {
+
             // Para pruebas, usamos datos simulados
             await new Promise(resolve => setTimeout(resolve, 500)); // Simular latencia
             
@@ -75,53 +76,91 @@ export class PositionService {
      */
     static async getCandidates(positionId: string | number): Promise<any> {
         try {
+
             // Para pruebas, usamos datos simulados
             await new Promise(resolve => setTimeout(resolve, 300)); // Simular latencia
             
-            const mockCandidates = [
-                {
-                    id: 1,
-                    applicationId: 101,
-                    fullName: "Jane Smith",
-                    currentInterviewStep: "Technical Interview",
-                    averageScore: 4.2
-                },
-                {
-                    id: 2,
-                    applicationId: 102,
-                    fullName: "Carlos García",
-                    currentInterviewStep: "Initial Screening",
-                    averageScore: 0
-                },
-                {
-                    id: 3,
-                    applicationId: 103,
-                    fullName: "John Doe",
-                    currentInterviewStep: "Manager Interview",
-                    averageScore: 4.8
-                },
-                {
-                    id: 4,
-                    applicationId: 104,
-                    fullName: "Ana Rodriguez",
-                    currentInterviewStep: "Initial Screening",
-                    averageScore: 3.5
-                },
-                {
-                    id: 5,
-                    applicationId: 105,
-                    fullName: "Michael Johnson",
-                    currentInterviewStep: "Final Interview",
-                    averageScore: 4.6
-                },
-                {
-                    id: 6,
-                    applicationId: 106,
-                    fullName: "Sophie Chen",
-                    currentInterviewStep: "Technical Interview",
-                    averageScore: 4.1
-                }
-            ];
+            // Candidatos específicos por posición
+            const candidatesByPosition: { [key: string]: any[] } = {
+                '1': [ // Senior Backend Engineer
+                    {
+                        id: 1,
+                        applicationId: 101,
+                        fullName: "Jane Smith",
+                        currentInterviewStep: "Technical Interview",
+                        averageScore: 4.2
+                    },
+                    {
+                        id: 2,
+                        applicationId: 102,
+                        fullName: "Carlos García",
+                        currentInterviewStep: "Initial Screening",
+                        averageScore: 0
+                    },
+                    {
+                        id: 3,
+                        applicationId: 103,
+                        fullName: "John Doe",
+                        currentInterviewStep: "Manager Interview",
+                        averageScore: 4.8
+                    },
+                    {
+                        id: 4,
+                        applicationId: 104,
+                        fullName: "Michael Johnson",
+                        currentInterviewStep: "Final Interview",
+                        averageScore: 4.6
+                    }
+                ],
+                '2': [ // Junior Android Engineer
+                    {
+                        id: 5,
+                        applicationId: 105,
+                        fullName: "Ana Rodriguez",
+                        currentInterviewStep: "Initial Screening",
+                        averageScore: 3.5
+                    },
+                    {
+                        id: 6,
+                        applicationId: 106,
+                        fullName: "Sophie Chen",
+                        currentInterviewStep: "Technical Interview",
+                        averageScore: 4.1
+                    },
+                    {
+                        id: 7,
+                        applicationId: 107,
+                        fullName: "David López",
+                        currentInterviewStep: "Manager Interview",
+                        averageScore: 3.8
+                    }
+                ],
+                '3': [ // Product Manager
+                    {
+                        id: 8,
+                        applicationId: 108,
+                        fullName: "María González",
+                        currentInterviewStep: "Initial Screening",
+                        averageScore: 4.0
+                    },
+                    {
+                        id: 9,
+                        applicationId: 109,
+                        fullName: "Robert Wilson",
+                        currentInterviewStep: "Technical Interview",
+                        averageScore: 3.7
+                    },
+                    {
+                        id: 10,
+                        applicationId: 110,
+                        fullName: "Emma Thompson",
+                        currentInterviewStep: "Final Interview",
+                        averageScore: 4.5
+                    }
+                ]
+            };
+            
+            const mockCandidates = candidatesByPosition[positionId.toString()] || [];
             
             return mockCandidates;
             

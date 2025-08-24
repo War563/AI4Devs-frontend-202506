@@ -37,6 +37,8 @@ const PositionKanban: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     
+
+    
     // Estados del componente
     const [positionData, setPositionData] = useState<PositionData | null>(null);
     const [candidates, setCandidates] = useState<Candidate[]>([]);
