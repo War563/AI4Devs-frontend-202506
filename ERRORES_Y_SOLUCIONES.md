@@ -39,5 +39,31 @@ Para evitar este problema en el futuro:
 2. Ejecutar `npm install` después de clonar el proyecto
 3. Verificar que todas las dependencias necesarias estén listadas en el `package.json`
 
+## Error: Archivo JavaScript no es módulo en TypeScript
+
+### Descripción del Error
+Al compilar el proyecto TypeScript, se producía el siguiente error:
+```
+TS2306: File 'positionService.js' is not a module.
+```
+
+### Causa del Problema
+El proyecto utiliza TypeScript pero el servicio fue creado como archivo `.js`, causando incompatibilidad de tipos.
+
+### Solución Aplicada
+1. **Eliminación del archivo JS**: Se eliminó `positionService.js`
+2. **Creación de archivo TS**: Se creó `positionService.ts` con tipos TypeScript
+3. **Tipado de funciones**: Se añadieron tipos explícitos para parámetros y valores de retorno
+
+### Comandos Ejecutados
+```bash
+# Eliminar archivo JS
+rm src/services/positionService.js
+# Crear nuevo archivo TS con tipos apropiados
+```
+
+### Resultado
+El proyecto compila exitosamente sin errores de TypeScript.
+
 ---
 *Documentación creada el: 24 de agosto de 2025*
